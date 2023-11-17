@@ -1,3 +1,5 @@
 # neural-network-handwritten-numbers
 
-Soon...
+Readme will be later.
+
+Link to the page: [Network](https://michael-bill.github.io/neural-network-handwritten-numbers/)
