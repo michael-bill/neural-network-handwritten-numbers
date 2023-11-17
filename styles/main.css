@@ -52,19 +52,34 @@ body {
     cursor: pointer;
 }
 
+header {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: -440px;
+    margin: auto;
+    width: 500px;
+    height: 200px;
+}
+
 footer {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    top: 900px;
+    top: 600px;
     margin: auto;
     width: 500px;
-    height: 500px;
+    height: 200px;
 }
 
-p {
+p, b {
     font-size: 18px;
+    color: white;
+}
+
+a {
     color: white;
 }
 
