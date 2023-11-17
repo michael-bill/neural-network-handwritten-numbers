@@ -2,6 +2,7 @@ import Network from './network/network.js'
 
 const resultLabel = document.getElementById("result-label")
 const clearButton = document.getElementById("clear-button")
+const slider = document.getElementById("brush-slider")
 const canvas = document.getElementById("canvas-draw")
 const ctx = canvas.getContext("2d")
 const IMG_SIZE = 28
@@ -34,6 +35,7 @@ function mouseDown(event) {
     painting = true
 }
 
+let brushWeight = 0.5
 function mouseMove(offsetX, offsetY) {
     if (painting) {
         let mx = Math.floor(offsetX / PIXEL_SIZE)
@@ -43,9 +45,9 @@ function mouseMove(offsetX, offsetY) {
                 let dist = (i - mx) * (i - mx) + (j - my) * (j - my)
                 if (dist < 1) dist = 1
                 dist *= dist
-                image[i][j] += (0.04 / dist) * 3
+                image[i][j] += (0.3 / dist) * brushWeight
                 if (image[i][j] > 1) image[i][j] = 1
-                if (image[i][j] < 0.035) image[i][j] = 0
+                if (image[i][j] < 0.005) image[i][j] = 0
             }
         }
         draw()
@@ -65,6 +67,9 @@ function mouseUp(event) {
     let res = network.getMaxNeuronIndexFromLastLayer()
     resultLabel.innerHTML = res
 }
+
+let network = new Network([784, 250, 100, 10])
+network.loadWeightFromFile()
 
 canvas.addEventListener("mousedown", mouseDown)
 canvas.addEventListener("mouseup", mouseUp)
@@ -92,5 +97,6 @@ clearButton.addEventListener("click", () => {
     resultLabel.innerHTML = ''
 })
 
-let network = new Network([784, 250, 100, 10])
-network.loadWeightFromFile()
+slider.addEventListener("input", function() {
+    brushWeight = parseFloat(slider.value);
+});

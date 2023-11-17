@@ -56,7 +56,7 @@ class Network {
     }
 
     async loadWeightFromFile() {
-        let data = await fetch('/scripts/weights.txt').then(response => response.text())
+        let data = await fetch( window.location.href + '/scripts/weights.txt').then(response => response.text())
         let textWeights = data.split(' ')
         let c = 0
         for (let i = 0; i < this.layers - 1; i++) {
