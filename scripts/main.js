@@ -46,7 +46,7 @@ function mouseMove(offsetX, offsetY) {
                 let dist = (i - mx) * (i - mx) + (j - my) * (j - my)
                 if (dist < 1) dist = 1
                 dist *= dist
-                image[i][j] += (0.8 / dist) * brushWeight
+                image[i][j] += (0.85 / dist) * brushWeight
                 if (image[i][j] > 1) image[i][j] = 1
                 if (image[i][j] < 0.005) image[i][j] = 0
             }
