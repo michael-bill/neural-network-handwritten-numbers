@@ -56,7 +56,6 @@ function mouseMove(offsetX, offsetY) {
 
 function mouseUp(event) {
     image = centerDigit(image)
-    draw()
     doResult()
 }
 
