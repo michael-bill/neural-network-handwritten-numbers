@@ -9,6 +9,7 @@ const IMG_SIZE = 28
 const PIXEL_SIZE = 10
 
 let image = []
+let resImage = []
 for (let i = 0; i < IMG_SIZE; i++) {
     image[i] = []
     for (let j = 0; j < IMG_SIZE; j++) {
@@ -55,7 +56,7 @@ function mouseMove(offsetX, offsetY) {
 }
 
 function mouseUp(event) {
-    image = centerDigit(image)
+    resImage = centerDigit(image)
     doResult()
 }
 
@@ -64,7 +65,7 @@ function doResult() {
     let input = []
     for (let i = 0; i < IMG_SIZE; i++) {
         for (let j = 0; j < IMG_SIZE; j++) {
-            input.push(image[j][i])
+            input.push(resImage[j][i])
         }
     }
 
