@@ -19,20 +19,24 @@ body {
     margin: auto;
     border: 2px solid white;
 
-    width: 500px;
+    width: 570px;
     height: 304px;
 }
 
 #result-info {
+    font-size: 26px;
     position: absolute;
-    top: 20px;
-    left: 520px;
-    width: 100px;
+    top: 10px;
+    left: 305px;
+    width: 95px;
+    height: 273px;
+    border: 2px solid white;
+    padding: 4px;
 }
 
 .number-guess {
     color: white;
-    font-size: 26px;
+    margin-left: 3px;
 }
 
 #canvas-draw {
@@ -44,20 +48,20 @@ body {
 
 #result-label {
     position: absolute;
-    top: 80px;
-    right: 73px;
-    font-size: 120px;
+    top: 60px;
+    left: 453px;
+    font-size: 150px;
     color: white;
 }
 
 #clear-button {
     position: absolute;
     bottom: 10px;
-    right: 50px;
-    width: 100px;
-    height: 30px;
+    left: 433px;
+    width: 120px;
+    height: 40px;
 
-    font-size: 16px;
+    font-size: 26px;
     background: black;
     border: 2px solid white;
     color: white;
@@ -71,7 +75,7 @@ header {
     bottom: 0;
     top: -440px;
     margin: auto;
-    width: 500px;
+    width: 570px;
     height: 200px;
 }
 
@@ -82,7 +86,7 @@ footer {
     bottom: 0;
     top: 600px;
     margin: auto;
-    width: 500px;
+    width: 570px;
     height: 200px;
 }
 
@@ -96,7 +100,7 @@ a {
 }
 
 #brush-slider {
-    width: 500px;
+    width: 570px;
 }
 
 
