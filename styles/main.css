@@ -23,6 +23,18 @@ body {
     height: 304px;
 }
 
+#result-info {
+    position: absolute;
+    top: 20px;
+    left: 520px;
+    width: 200px;
+}
+
+.number-guess {
+    color: white;
+    font-size: 26px;
+}
+
 #canvas-draw {
     position: absolute;
     margin: 10px;

@@ -2,20 +2,20 @@ import Neuron from './neuron.js';
 
 class Network {
     constructor(numberOfNeuronsInLayers) {
-        this.layers = numberOfNeuronsInLayers.length;
-        this.neurons = [];
-        this.weights = [];
+        this.layers = numberOfNeuronsInLayers.length
+        this.neurons = []
+        this.weights = []
         for (let i = 0; i < this.layers; i++) {
-            this.neurons[i] = [];
+            this.neurons[i] = []
             for (let j = 0; j < numberOfNeuronsInLayers[i]; j++) {
-                this.neurons[i][j] = new Neuron();
+                this.neurons[i][j] = new Neuron()
             }
-            if (i >= this.Layers - 1) continue;
-            this.weights[i] = [];
+            if (i >= this.Layers - 1) continue
+            this.weights[i] = []
             for (let j = 0; j < numberOfNeuronsInLayers[i]; j++) {
-                this.weights[i][j] = [];
+                this.weights[i][j] = []
                 for (let k = 0; k < numberOfNeuronsInLayers[i + 1]; k++) {
-                    this.weights[i][j][k] = 0;
+                    this.weights[i][j][k] = 0
                 }
             }
         }
@@ -37,6 +37,10 @@ class Network {
             }
         }
         return maxIndex
+    }
+
+    getLastLayer() {
+        return this.neurons[this.layers - 1]
     }
 
     getMaxNeuronIndexFromLastLayer() {

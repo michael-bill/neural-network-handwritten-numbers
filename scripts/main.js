@@ -55,6 +55,10 @@ function mouseMove(offsetX, offsetY) {
 }
 
 function mouseUp(event) {
+    doResult();
+}
+
+function doResult() {
     painting = false
     let input = []
     for (let i = 0; i < IMG_SIZE; i++) {
@@ -66,6 +70,18 @@ function mouseUp(event) {
     network.forwardFeed()
     let res = network.getMaxNeuronIndexFromLastLayer()
     resultLabel.innerHTML = res
+
+    let lastLayer = network.getLastLayer()
+    let i = 0
+    for (var item of document.getElementById('result-info').children) {
+        if (i == res) {
+            item.style.color = 'rgb(0, 255, 0)'
+        } else {
+            item.style.color = 'rgb(255, 255, 255)'
+        }
+        item.innerHTML = i + ": " + Math.round(lastLayer[i].value * 100) + "%"
+        i++
+    }
 }
 
 let network = new Network([784, 250, 100, 10])
@@ -94,7 +110,13 @@ clearButton.addEventListener("click", () => {
         }
     }
     draw()
-    resultLabel.innerHTML = ''
+    resultLabel.innerHTML = 'N'
+    let i = 0
+    for (var item of document.getElementById('result-info').children) {
+        item.innerHTML = i + ": 0%"
+        item.style.color = 'rgb(255, 255, 255)'
+        i++
+    }
 })
 
 slider.addEventListener("input", function() {
