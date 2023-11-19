@@ -37,8 +37,14 @@ function mouseDown(event) {
 }
 
 let brushWeight = 0.5
+let time = new Date().getTime()
 function mouseMove(offsetX, offsetY) {
     if (painting) {
+        let newTime = new Date().getTime()
+        if (newTime - time >= 50) {
+            doResult()
+            time = newTime
+        }
         let mx = Math.floor(offsetX / PIXEL_SIZE)
         let my = Math.floor(offsetY / PIXEL_SIZE)
         for (let i = 0; i < IMG_SIZE; i++) {
@@ -56,12 +62,12 @@ function mouseMove(offsetX, offsetY) {
 }
 
 function mouseUp(event) {
-    resImage = centerDigit(image)
+    painting = false
     doResult()
 }
 
 function doResult() {
-    painting = false
+    resImage = centerDigit(image)
     let input = []
     for (let i = 0; i < IMG_SIZE; i++) {
         for (let j = 0; j < IMG_SIZE; j++) {
