@@ -55,7 +55,9 @@ function mouseMove(offsetX, offsetY) {
 }
 
 function mouseUp(event) {
-    doResult();
+    image = centerDigit(image)
+    draw()
+    doResult()
 }
 
 function doResult() {
@@ -66,6 +68,7 @@ function doResult() {
             input.push(image[j][i])
         }
     }
+
     network.setInput(input)
     network.forwardFeed()
     let res = network.getMaxNeuronIndexFromLastLayer()
@@ -122,3 +125,40 @@ clearButton.addEventListener("click", () => {
 slider.addEventListener("input", function() {
     brushWeight = parseFloat(slider.value);
 });
+
+function centerDigit(matrix) {
+    let minX = matrix.length;
+    let minY = matrix[0].length;
+    let maxX = 0;
+    let maxY = 0;
+  
+    for (let i = 0; i < matrix.length; i++) {
+      for (let j = 0; j < matrix[i].length; j++) {
+        if (matrix[i][j] > 0) {
+          minX = Math.min(minX, i);
+          minY = Math.min(minY, j);
+          maxX = Math.max(maxX, i);
+          maxY = Math.max(maxY, j);
+        }
+      }
+    }
+  
+    const offsetX = Math.floor((matrix.length - (maxX - minX + 1)) / 2) - minX;
+    const offsetY = Math.floor((matrix[0].length - (maxY - minY + 1)) / 2) - minY;
+  
+    const centeredMatrix = Array.from({ length: matrix.length }, () =>
+      Array.from({ length: matrix[0].length }, () => 0)
+    );
+  
+    for (let i = 0; i < matrix.length; i++) {
+      for (let j = 0; j < matrix[i].length; j++) {
+        if (matrix[i][j] > 0) {
+          const newX = i + offsetX;
+          const newY = j + offsetY;
+          centeredMatrix[newX][newY] = matrix[i][j];
+        }
+      }
+    }
+  
+    return centeredMatrix;
+  }
